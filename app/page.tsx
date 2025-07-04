@@ -321,7 +321,7 @@ export default function RadimalScheduler() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex-1">
               <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
-                Radimal Scheduler
+                Rad Scheduler
               </h1>
               <p className="text-slate-600 text-sm lg:text-base">
                 Claim shifts, earn points, build your reputation
