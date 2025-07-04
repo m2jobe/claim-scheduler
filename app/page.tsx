@@ -317,56 +317,60 @@ export default function RadimalScheduler() {
 
       {/* Header */}
       <div className="bg-white/80 backdrop-blur-sm border-b border-slate-200 shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <div className="flex-1">
-              <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-2">
-                Rad Scheduler
-              </h1>
-              <p className="text-slate-600 text-sm lg:text-base">
-                Claim shifts, earn points, build your reputation
-              </p>
-            </div>
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div className="flex-1">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent mb-1 sm:mb-2">
+                  Radimal Scheduler
+                </h1>
+                <p className="text-slate-600 text-xs sm:text-sm lg:text-base">
+                  Claim shifts, earn points, build your reputation
+                </p>
+              </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-              <button
-                onClick={() => setShowHistory(!showHistory)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-all duration-200 hover:scale-105"
-              >
-                {showHistory ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-                {showHistory ? "Hide History" : "View History"}
-              </button>
-
-              <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-lg text-sm font-medium hover:from-teal-700 hover:to-blue-700 transition-all duration-200 hover:scale-105 shadow-sm">
-                <Trophy className="h-4 w-4" />
-                Convert Points
-              </button>
-
-              <div className="flex items-center gap-3 bg-gradient-to-r from-teal-50 to-blue-50 px-4 py-2 rounded-lg border border-teal-100 shadow-sm">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-white text-sm font-bold flex items-center justify-center shadow-sm">
+              {/* User Profile - Always visible on mobile */}
+              <div className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-blue-50 px-3 py-2 rounded-lg border border-teal-100 shadow-sm">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-white text-xs sm:text-sm font-bold flex items-center justify-center shadow-sm">
                   SC
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900 text-sm">
+                  <p className="font-semibold text-slate-900 text-xs sm:text-sm">
                     Dr. Sarah Chen
                   </p>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-slate-600 hidden sm:block">
                     Orthopedic Specialist
                   </p>
                 </div>
               </div>
             </div>
+
+            {/* Action buttons - Stack on mobile */}
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <button
+                onClick={() => setShowHistory(!showHistory)}
+                className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-xs sm:text-sm font-medium hover:bg-slate-200 transition-all duration-200 hover:scale-105"
+              >
+                {showHistory ? (
+                  <EyeOff className="h-3 w-3 sm:h-4 sm:w-4" />
+                ) : (
+                  <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
+                )}
+                {showHistory ? "Hide History" : "View History"}
+              </button>
+
+              <button className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-lg text-xs sm:text-sm font-medium hover:from-teal-700 hover:to-blue-700 transition-all duration-200 hover:scale-105 shadow-sm">
+                <Trophy className="h-3 w-3 sm:h-4 sm:w-4" />
+                Convert Points
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {loading ? (
             Array(4)
               .fill(0)
@@ -374,41 +378,41 @@ export default function RadimalScheduler() {
           ) : (
             <>
               <div
-                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500" : ""}`}
+                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500" : ""}`}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-600">
+                    <p className="text-xs sm:text-sm font-medium text-slate-600">
                       This Week
                     </p>
-                    <p className="text-2xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent mt-1">
+                    <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent mt-1">
                       23
                     </p>
                     <p className="text-xs text-slate-500 mt-1">
                       Cases reviewed
                     </p>
-                    <div className="flex items-center gap-1 mt-2">
+                    <div className="flex items-center gap-1 mt-1 sm:mt-2">
                       <TrendingUp className="h-3 w-3 text-green-500" />
                       <span className="text-xs text-green-600 font-medium">
-                        +12% vs last week
+                        +12%
                       </span>
                     </div>
                   </div>
-                  <div className="p-3 bg-gradient-to-br from-teal-50 to-blue-50 rounded-xl">
-                    <Users className="h-6 w-6 text-teal-600" />
+                  <div className="p-2 sm:p-3 bg-gradient-to-br from-teal-50 to-blue-50 rounded-xl">
+                    <Users className="h-5 w-5 sm:h-6 sm:w-6 text-teal-600" />
                   </div>
                 </div>
               </div>
 
               <div
-                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500 delay-100" : ""}`}
+                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500 delay-100" : ""}`}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-600">
+                    <p className="text-xs sm:text-sm font-medium text-slate-600">
                       Active Streak
                     </p>
-                    <p className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mt-1">
+                    <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mt-1">
                       15
                     </p>
                     <p className="text-xs text-slate-500 mt-1">Days in a row</p>
@@ -416,7 +420,7 @@ export default function RadimalScheduler() {
                       content="Consecutive days with completed shifts"
                       id="streak"
                     >
-                      <div className="flex items-center gap-1 mt-2 cursor-help">
+                      <div className="flex items-center gap-1 mt-1 sm:mt-2 cursor-help">
                         <Zap className="h-3 w-3 text-orange-500" />
                         <span className="text-xs text-orange-600 font-medium">
                           On fire!
@@ -424,31 +428,31 @@ export default function RadimalScheduler() {
                       </div>
                     </Tooltip>
                   </div>
-                  <div className="p-3 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl">
-                    <Zap className="h-6 w-6 text-orange-500" />
+                  <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl">
+                    <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-orange-500" />
                   </div>
                 </div>
               </div>
 
               <div
-                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500 delay-200" : ""}`}
+                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500 delay-200" : ""}`}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-600">
+                    <p className="text-xs sm:text-sm font-medium text-slate-600">
                       Total Points
                     </p>
-                    <p className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent mt-1">
+                    <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent mt-1">
                       {currentUserPoints.toLocaleString()}
                     </p>
                     <p className="text-xs text-slate-500 mt-1">Gold tier</p>
                   </div>
-                  <div className="p-3 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl">
-                    <Trophy className="h-6 w-6 text-emerald-600" />
+                  <div className="p-2 sm:p-3 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl">
+                    <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-600" />
                   </div>
                 </div>
                 {pendingPoints > 0 && (
-                  <div className="mt-3 p-3 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg border border-amber-200 animate-in fade-in duration-300">
+                  <div className="mt-2 sm:mt-3 p-2 sm:p-3 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg border border-amber-200 animate-in fade-in duration-300">
                     <div className="flex items-center gap-2">
                       <Clock className="h-3 w-3 text-amber-600" />
                       <p className="text-xs font-medium text-amber-700">
@@ -463,26 +467,26 @@ export default function RadimalScheduler() {
               </div>
 
               <div
-                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500 delay-300" : ""}`}
+                className={`bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${animatingCards ? "animate-in slide-in-from-bottom-4 duration-500 delay-300" : ""}`}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-600">
+                    <p className="text-xs sm:text-sm font-medium text-slate-600">
                       Avg Response
                     </p>
-                    <p className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-1">
+                    <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-1">
                       12m
                     </p>
                     <p className="text-xs text-slate-500 mt-1">Response time</p>
-                    <div className="flex items-center gap-1 mt-2">
+                    <div className="flex items-center gap-1 mt-1 sm:mt-2">
                       <CheckCircle className="h-3 w-3 text-green-500" />
                       <span className="text-xs text-green-600 font-medium">
                         Excellent
                       </span>
                     </div>
                   </div>
-                  <div className="p-3 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl">
-                    <Clock className="h-6 w-6 text-indigo-600" />
+                  <div className="p-2 sm:p-3 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl">
+                    <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-600" />
                   </div>
                 </div>
               </div>
@@ -491,34 +495,34 @@ export default function RadimalScheduler() {
         </div>
 
         {/* Point System Info */}
-        <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 rounded-xl p-4 border border-blue-200 shadow-sm">
-          <div className="flex items-start gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Info className="h-4 w-4 text-blue-600" />
+        <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 rounded-xl p-3 sm:p-4 border border-blue-200 shadow-sm">
+          <div className="flex items-start gap-2 sm:gap-3">
+            <div className="p-1.5 sm:p-2 bg-blue-100 rounded-lg">
+              <Info className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-800 mb-2">
+              <p className="text-xs sm:text-sm font-semibold text-slate-800 mb-2">
                 Point System
               </p>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 text-xs">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="h-3 w-3 text-emerald-600" />
+                  <CheckCircle className="h-3 w-3 text-emerald-600 flex-shrink-0" />
                   <span className="text-slate-700">
                     Completed shifts +50pts
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <AlertCircle className="h-3 w-3 text-red-600" />
+                  <AlertCircle className="h-3 w-3 text-red-600 flex-shrink-0" />
                   <span className="text-slate-700">No-shows -200pts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Zap className="h-3 w-3 text-orange-600" />
+                  <Zap className="h-3 w-3 text-orange-600 flex-shrink-0" />
                   <span className="text-slate-700">
                     Emergency coverage +200pts
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="h-3 w-3 text-amber-600" />
+                  <Clock className="h-3 w-3 text-amber-600 flex-shrink-0" />
                   <span className="text-slate-700">
                     24hr+ cancellation -25pts
                   </span>
@@ -598,34 +602,34 @@ export default function RadimalScheduler() {
 
         {/* Leaderboard */}
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="px-6 py-4 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-blue-50">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-200 bg-gradient-to-r from-slate-50 to-blue-50">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
               <div className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-teal-600" />
-                <h2 className="text-lg font-semibold text-slate-900">
+                <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-teal-600" />
+                <h2 className="text-base sm:text-lg font-semibold text-slate-900">
                   Weekly Leaders
                 </h2>
-                <span className="text-sm text-slate-500">
-                  (Opt-in leaderboard)
+                <span className="text-xs sm:text-sm text-slate-500">
+                  (Opt-in)
                 </span>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
                 <div className="relative">
-                  <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+                  <Search className="h-3 w-3 sm:h-4 sm:w-4 absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
                   <input
                     type="text"
                     placeholder="Search vets..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    className="pl-7 sm:pl-9 pr-2 sm:pr-3 py-1.5 sm:py-2 border border-slate-200 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent w-full"
                   />
                 </div>
 
                 <select
                   value={filterLevel}
                   onChange={(e) => setFilterLevel(e.target.value)}
-                  className="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                  className="px-2 sm:px-3 py-1.5 sm:py-2 border border-slate-200 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                 >
                   <option value="all">All Levels</option>
                   <option value="platinum">Platinum</option>
@@ -636,7 +640,7 @@ export default function RadimalScheduler() {
             </div>
           </div>
 
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             {filteredVets.length === 0 ? (
               <div className="text-center py-8">
                 <Users className="h-12 w-12 text-slate-300 mx-auto mb-3" />
@@ -650,38 +654,38 @@ export default function RadimalScheduler() {
                 {filteredVets.map((vet, index) => (
                   <div
                     key={vet.id}
-                    className="flex items-center justify-between p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-all duration-200 hover:scale-[1.02] group"
+                    className="flex items-center justify-between p-3 sm:p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-all duration-200 hover:scale-[1.02] group"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-3">
-                        <span className="text-lg font-bold text-slate-400 w-6">
+                    <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <span className="text-sm sm:text-lg font-bold text-slate-400 w-4 sm:w-6 flex-shrink-0">
                           #{index + 1}
                         </span>
                         <div
-                          className={`w-10 h-10 rounded-full ${getLevelColor(vet.level)} text-white text-sm font-bold flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform`}
+                          className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full ${getLevelColor(vet.level)} text-white text-xs sm:text-sm font-bold flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform flex-shrink-0`}
                         >
                           {vet.avatar}
                         </div>
                       </div>
-                      <div>
-                        <p className="font-semibold text-slate-900">
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-slate-900 text-sm sm:text-base truncate">
                           {vet.name}{" "}
                           {vet.isCurrentUser && (
                             <span className="text-teal-600">(You)</span>
                           )}
                         </p>
-                        <p className="text-sm text-slate-600">
+                        <p className="text-xs sm:text-sm text-slate-600 truncate">
                           {vet.specialty}
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-2 sm:gap-6 flex-shrink-0">
                       <div className="text-right">
-                        <p className="font-semibold text-slate-900">
-                          {vet.thisWeek} cases
+                        <p className="font-semibold text-slate-900 text-sm sm:text-base">
+                          {vet.thisWeek}
                         </p>
                         <div className="flex items-center gap-1 text-xs">
-                          <span className="text-slate-500">
+                          <span className="text-slate-500 hidden sm:inline">
                             {vet.responseTime}
                           </span>
                           <TrendingUp className="h-3 w-3 text-green-500" />
@@ -693,14 +697,14 @@ export default function RadimalScheduler() {
                         id={`streak-${vet.id}`}
                       >
                         <div className="flex items-center gap-1 cursor-help">
-                          <Zap className="h-4 w-4 text-orange-500" />
-                          <span className="text-sm font-bold text-orange-600">
+                          <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-orange-500" />
+                          <span className="text-xs sm:text-sm font-bold text-orange-600">
                             {vet.streak}
                           </span>
                         </div>
                       </Tooltip>
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getLevelColor(vet.level)} shadow-sm`}
+                        className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium text-white ${getLevelColor(vet.level)} shadow-sm`}
                       >
                         {vet.level}
                       </span>
@@ -743,17 +747,17 @@ export default function RadimalScheduler() {
             </div>
           </div>
 
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <div className="overflow-x-auto">
-              <div className="grid grid-cols-8 gap-2 min-w-[800px]">
+              <div className="grid grid-cols-8 gap-1 sm:gap-2 min-w-[600px] sm:min-w-[800px]">
                 {/* Header */}
-                <div className="p-3 font-semibold text-slate-600 text-sm bg-slate-50 rounded-lg w-20">
+                <div className="p-2 sm:p-3 font-semibold text-slate-600 text-xs sm:text-sm bg-slate-50 rounded-lg w-16 sm:w-20">
                   Time
                 </div>
                 {weekDays.map((day, index) => (
                   <div
                     key={day}
-                    className="p-3 font-semibold text-slate-600 text-center text-sm bg-slate-50 rounded-lg w-24"
+                    className="p-2 sm:p-3 font-semibold text-slate-600 text-center text-xs sm:text-sm bg-slate-50 rounded-lg w-20 sm:w-24"
                   >
                     <div>{day}</div>
                     <div className="text-xs text-slate-500 mt-1">
@@ -765,8 +769,11 @@ export default function RadimalScheduler() {
                 {/* Time slots */}
                 {timeSlots.map((time, timeIndex) => (
                   <React.Fragment key={time}>
-                    <div className="p-3 text-sm text-slate-600 font-medium bg-slate-50 rounded-lg flex items-center w-20">
-                      {time}
+                    <div className="p-2 sm:p-3 text-xs sm:text-sm text-slate-600 font-medium bg-slate-50 rounded-lg flex items-center w-16 sm:w-20">
+                      <span className="hidden sm:inline">{time}</span>
+                      <span className="sm:hidden">
+                        {time.replace(":00", "")}
+                      </span>
                     </div>
                     {weekDays.map((day) => {
                       const slot = schedule[day][timeIndex];
@@ -775,7 +782,10 @@ export default function RadimalScheduler() {
                       const isPastDate = slotDate < currentDate;
 
                       return (
-                        <div key={`${day}-${time}`} className="p-1 w-24">
+                        <div
+                          key={`${day}-${time}`}
+                          className="p-0.5 sm:p-1 w-20 sm:w-24"
+                        >
                           {slot.available ? (
                             <Tooltip
                               content={
@@ -798,7 +808,7 @@ export default function RadimalScheduler() {
                               id={`slot-${day}-${timeIndex}`}
                             >
                               <button
-                                className={`w-24 h-20 rounded-xl transition-all duration-300 text-xs font-medium border-2 group relative overflow-hidden flex flex-col items-center justify-center ${
+                                className={`w-20 h-16 sm:w-24 sm:h-20 rounded-lg sm:rounded-xl transition-all duration-300 text-xs font-medium border-2 group relative overflow-hidden flex flex-col items-center justify-center ${
                                   slot.isMissed
                                     ? "bg-gradient-to-br from-red-50 to-red-100 text-red-700 border-red-200 hover:from-red-100 hover:to-red-150"
                                     : slot.isCompleted
@@ -901,7 +911,7 @@ export default function RadimalScheduler() {
                                       <span className="text-xs font-bold text-blue-600 leading-tight">
                                         +50 pts
                                       </span>
-                                      <span className="text-xs text-slate-500 leading-tight">
+                                      <span className="text-xs text-slate-500 leading-tight hidden sm:block">
                                         ~{slot.estimatedCases} cases
                                       </span>
                                     </>
@@ -921,33 +931,33 @@ export default function RadimalScheduler() {
             </div>
 
             {/* Enhanced Legend */}
-            <div className="mt-6 bg-slate-50 rounded-xl p-4">
-              <h3 className="text-sm font-semibold text-slate-700 mb-3">
+            <div className="mt-4 sm:mt-6 bg-slate-50 rounded-xl p-3 sm:p-4">
+              <h3 className="text-xs sm:text-sm font-semibold text-slate-700 mb-2 sm:mb-3">
                 Shift Status Legend
               </h3>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded"></div>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded flex-shrink-0"></div>
                   <span className="text-slate-600">Available (+50 pts)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 rounded"></div>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 rounded flex-shrink-0"></div>
                   <span className="text-slate-600">Emergency (+200 pts)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-teal-50 to-blue-50 border-2 border-teal-200 rounded"></div>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-teal-50 to-blue-50 border-2 border-teal-200 rounded flex-shrink-0"></div>
                   <span className="text-slate-600">Your claims</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded"></div>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded flex-shrink-0"></div>
                   <span className="text-slate-600">Completed (+50 pts)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 rounded"></div>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 rounded flex-shrink-0"></div>
                   <span className="text-slate-600">Claimed by others</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-200 rounded"></div>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-200 rounded flex-shrink-0"></div>
                   <span className="text-slate-600">
                     Missed/No-show (-200 pts)
                   </span>
